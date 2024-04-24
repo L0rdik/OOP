@@ -1,0 +1,50 @@
+public class ArrayMathOperations {
+    
+    public static void main(String[] args) {
+        // Тестування методу для обчислення площі трапеції
+        double area = calculateTrapezoidArea(5.0, 3.0, 4.0);
+        System.out.println("Площа трапеції: " + area);
+
+        // Тестування методу для пошуку найменшого числа
+        double min = findMinimum(12, 25, 9);
+        System.out.println("Найменше число: " + min);
+
+        // Тестування методу для виводу масиву
+        int[] array = {10, 20, 30, 40, 50};
+        System.out.print("Масив: ");
+        printArray(array);
+
+        // Тестування методу для визначення найбільшого числа в масиві
+        int max = findMaximum(array);
+        System.out.println("Найбільше число в масиві: " + max);
+    }
+
+    // Метод для обчислення площі трапеції
+    public static double calculateTrapezoidArea(double a, double b, double h) {
+        return (a + b) * h / 2.0;
+    }
+
+    // Метод для пошуку найменшого числа
+    public static double findMinimum(double num1, double num2, double num3) {
+        return Math.min(num1, Math.min(num2, num3));
+    }
+
+    // Метод для виводу масиву
+    public static void printArray(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println(); // Для переносу рядка після виводу масиву
+    }
+
+    // Метод для визначення найбільшого числа в масиві
+    public static int findMaximum(int[] array) {
+        int max = array[0];
+        for (int num : array) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+}
