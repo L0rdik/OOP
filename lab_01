@@ -1,52 +1,92 @@
-class User {    int id;
-    int age;    String name;
-    String surname;    double weight;
-    double height;
-    public User(int id, int age, String name, String surname, double weight, double height) {        this.id = id;
-        this.age = age;        this.name = name;
-        this.surname = surname;        this.weight = weight;
-        this.height = height;    }
-}
-class Car {    int horsepower;
-    double engineVolume;
-    public Car(int horsepower, double engineVolume) {        this.horsepower = horsepower;
-        this.engineVolume = engineVolume;    }
-}
-public class Main {    public static void main(String[] args) {
-        int a = 5, b = 7, c = 10, d = 3, e = 8, f = 2, g = 6, h = 4, i = 9, j = 1;
-        int sum = a + b + c + d + e + f + g + h + i + j;        int diff = a - b - c - d - e - f - g - h - i - j;
-        int product = a * b * c * d * e * f * g * h * i * j;        int division = a / b / c / d / e / f / g / h / i / j;
-        System.out.println("Сума: " + sum);
-        System.out.println("Різниця: " + diff);        System.out.println("Добуток: " + product);
-        System.out.println("Ділення: " + division);
-        String word1 = "Сонце", word2 = "високо", word3 = "на", word4 = "небі,", word5 = "птахи",                word6 = "літають,", word7 = "хмари", word8 = "розтікаються,", word9 = "діти", word10 = "грають.";
-        System.out.println(word1 + " " + word2 + " " + word3 + " " + word4 + " " + word5 + " " +
-                word6 + " " + word7 + " " + word8 + " " + word9 + " " + word10);
-        User[] users = new User[] {                new User(1, 20, "Іван", "Іванов", 70.5, 180.0),
-                new User(2, 25, "Петро", "Петров", 65.2, 175.5),                new User(3, 30, "Марія", "Петрівна", 55.8, 165.0),
-                new User(4, 35, "Олександр", "Олександрович", 80.3, 190.0),                new User(5, 40, "Анна", "Сидорова", 60.1, 170.0),
-                new User(6, 45, "Сергій", "Сергійович", 75.6, 185.5),                new User(7, 50, "Тетяна", "Сергіївна", 68.9, 175.0),
-                new User(8, 55, "Ольга", "Миколаївна", 63.4, 160.0),                new User(9, 60, "Ірина", "Олексіївна", 70.2, 170.5),
-                new User(10, 65, "Василь", "Іванович", 85.0, 180.0)        };
-        int totalAge = 0;
-        double totalWeight = 0, totalHeight = 0;
-        for (User user : users) {            totalAge += user.age;
-            totalWeight += user.weight;            totalHeight += user.height;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Вводимо коефіцієнти a, b і c
+        System.out.print("Enter task id: ");
+        int mode = scanner.nextInt();
+        if(mode == 0){
+        
+        // Вводимо коефіцієнти a, b і c
+        System.out.print("Enter the factor a: ");
+        double a = scanner.nextDouble();
+        System.out.print("Enter the factor b: ");
+        double b = scanner.nextDouble();
+        System.out.print("Enter the factor c: ");
+        double c = scanner.nextDouble();
+        
+        // Закриваємо сканер
+        
+
+        // Обчислюємо дискримінант
+        double discriminant = b * b - 4 * a * c;
+
+        // Обрахунок коренів
+        if (discriminant > 0) {
+            double x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            double x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            System.out.println("The equation has two different roots: x1 = " + x1 + " і x2 = " + x2);
+        } else if (discriminant == 0) {
+            double x = -b / (2 * a);
+            System.out.println("The equation has one root: x = " + x);
+        } else {
+            System.out.println("The equation has no roots");
         }
-        System.out.println("Сума віку: " + totalAge);        System.out.println("Сума ваги: " + totalWeight);
-        System.out.println("Сума зросту: " + totalHeight);
-        Car[] cars = new Car[] {                new Car(150, 2.0),
-                new Car(200, 2.5),                new Car(180, 2.2),
-                new Car(170, 1.8),                new Car(220, 2.8),
-                new Car(190, 2.3),                new Car(160, 1.6),
-                new Car(210, 2.6),                new Car(175, 1.9),
-                new Car(230, 3.0)        };
-        double totalEngineVolume = 0;
-        int totalHorsepower = 0;
-        for (Car car : cars) {            totalEngineVolume += car.engineVolume;
-            totalHorsepower += car.horsepower;        }
-        System.out.println("Сума об'ємів двигунів: " + totalEngineVolume);
-        System.out.println("Сума кінських сил: " + totalHorsepower);
-        int number = 412;        int reversedNumber = (number % 10) * 100 + ((number / 10) % 10) * 10 + (number / 100);
-        System.out.println("Реверс трьохзначного числа " + number + ": " + reversedNumber);    }
+    }else if(mode == 1){
+
+        // Вводимо координати x та y
+        System.out.print("Type x: ");
+        double x = scanner.nextDouble();
+        System.out.print("Type y: ");
+        double y = scanner.nextDouble();
+
+        // Визначаємо квадрант
+        if (x > 0 && y > 0) {
+            System.out.println("The point is in the I quadrant.");
+        } else if (x < 0 && y > 0) {
+            System.out.println("The point is in the II quadrant.");
+        } else if (x < 0 && y < 0) {
+            System.out.println("The point is in the III quadrant.");
+        } else if (x > 0 && y < 0) {
+            System.out.println("The point is in the IV quadrant.");
+        } else if (x == 0 && y != 0) {
+            System.out.println("The point is on the X axis.");
+        } else if (y == 0 && x != 0) {
+            System.out.println("The point is on the Y axis");
+        } else {
+            System.out.println("It is zero point");
+        }
+
+    }else if(mode == 2){
+
+        // Запитуємо у користувача число
+        System.out.print("Type number: ");
+        int number = scanner.nextInt();
+
+        // Визначаємо, чи є число двозначним
+        boolean isTwoDigit = (number >= 10 && number <= 99) || (number <= -10 && number >= -99);
+
+        // Визначаємо, чи є число парним
+        boolean isEven = number % 2 == 0;
+        System.out.println("Number " + number + " is "+ (isTwoDigit?"two-digit and":"not two-digit and")+ (isEven?" even.":" not even"));
+    }else if(mode ==3){
+        // Запитуємо у користувача число
+        System.out.print("Type x: ");
+        int number = scanner.nextInt();
+        double res = -1;
+
+
+        if(number <= 2){
+            res = Math.sqrt(Math.abs(1/Math.tan(number+1)));
+        }else if(number<=2){
+            res = Math.log(Math.abs(3-Math.cos(number)))/Math.log(2);
+        }else{
+            res = Math.pow(Math.E, (2*number-3*number*number));
+        }
+
+        System.out.println("Result: "+res);
+    }
+    scanner.close();
+   }
 }
