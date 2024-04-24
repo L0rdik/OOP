@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+
+public class ArrayTasks {
+    public static void main(String[] args) {
+        
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < 100; i += 2) {
+            numbers.add(i);  
+        }
+        for (int i = 1; i < 100; i += 2) {
+            numbers.add(i);  
+        }
+        System.out.println("Заповнений масив парними та непарними числами: " + numbers);
+
+        
+        int[] array = {2, 17, 13, 6, 22, 31, 45, 66, 100, -18};
+        
+        int i = 0;
+        System.out.println("\nЦикл while:");
+        while (i < array.length) {
+            System.out.println(array[i]);
+            i++;
+        }
+        
+        System.out.println("\nЦикл for:");
+        for (int j = 0; j < array.length; j++) {
+            System.out.println(array[j]);
+        }
+       
+        System.out.println("\nЦикл while для непарних індексів:");
+        i = 1;
+        while (i < array.length) {
+            System.out.println(array[i]);
+            i += 2;
+        }
+        
+        System.out.println("\nЦикл for для парних індексів:");
+        for (int j = 0; j < array.length; j += 2) {
+            System.out.println(array[j]);
+        }
+       
+        System.out.println("\nМасив в зворотньому порядку:");
+        for (int j = array.length - 1; j >= 0; j--) {
+            System.out.println(array[j]);
+        }
+
+        
+        double sum = 0;
+        for (double value : array) {
+            sum += value;
+        }
+        System.out.println("\nСума елементів масиву: " + sum);
+
+       
+        System.out.println("\nЗмінені знаки непарних елементів масиву:");
+        for (int j = 0; j < array.length; j++) {
+            if (array[j] % 2 != 0) {
+                array[j] = -array[j];
+            }
+            System.out.println(array[j]);
+        }
+    }
+}
