@@ -1,0 +1,171 @@
+public class  {
+    public static void main(String[] args) {
+        // Тестування класу Person
+        Person person1 = new Person();
+        Person person2 = new Person("John Doe", 30);
+        person1.move();
+        person2.talk();
+
+        // Тестування класу Phone
+        Phone phone1 = new Phone("1234567890", "ModelX", 5.6);
+        Phone phone2 = new Phone("0987654321", "ModelY", 6.0);
+        Phone phone3 = new Phone("1122334455", "ModelZ", 5.8);
+        phone1.receiveCall("Alice");
+        phone2.receiveCall("Bob", phone2.getNumber());
+        phone3.sendMessage("7778889990", "6667778880");
+
+        // Тестування класів Sedan і Truck
+        Car sedan = new Sedan("Toyota Camry", "чорний", 220);
+        Car truck = new Truck("MAN TGX", "білий", 160);
+        sedan.gas();
+        truck.brake();
+
+        // Тестування класу Matrix
+        Matrix matrix = new Matrix();
+        int[][] data = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+        matrix.inputMatrix(data);
+        matrix.printMatrix();
+        matrix.printNorm();
+    }
+}
+
+class Person {
+    private String fullName;
+    private int age;
+
+    public Person() {
+        this.fullName = "Unknown";
+        this.age = 0;
+    }
+
+    public Person(String fullName, int age) {
+        this.fullName = fullName;
+        this.age = age;
+    }
+
+    public void move() {
+        System.out.println(this.fullName + " рухається.");
+    }
+
+    public void talk() {
+        System.out.println(this.fullName + " говорить.");
+    }
+}
+
+class Phone {
+    private String number;
+    private String model;
+    private double weight;
+
+    public Phone() {
+        this.number = "0000000000";
+        this.model = "Default";
+        this.weight = 0.0;
+    }
+
+    public Phone(String number, String model, double weight) {
+        this.number = number;
+        this.model = model;
+        this.weight = weight;
+    }
+
+    public Phone(String number, String model) {
+        this.number = number;
+        this.model = model;
+    }
+
+    public void receiveCall(String name) {
+        System.out.println("Дзвонить " + name);
+    }
+
+    public void receiveCall(String name, String number) {
+        System.out.println("Дзвонить " + name + " з номера " + number);
+    }
+
+    public String getNumber() {
+        return this.number;
+    }
+
+    public void sendMessage(String... numbers) {
+        System.out.print("Повідомлення відправлено на номери: ");
+        for (String num : numbers) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
+
+abstract class Car {
+    protected String model;
+    protected String color;
+    protected int maxSpeed;
+
+    public Car(String model, String color, int maxSpeed) {
+        this.model = model;
+        this.color = color;
+        this.maxSpeed = maxSpeed;
+    }
+
+    public void gas() {
+        System.out.println("Газуємо!");
+    }
+
+    abstract void brake();
+}
+
+class Sedan extends Car {
+    public Sedan(String model, String color, int maxSpeed) {
+        super(model, color, maxSpeed);
+    }
+
+    @Override
+    public void brake() {
+        System.out.println("Седан гальмує!");
+    }
+}
+
+class Truck extends Car {
+    public Truck(String model, String color, int maxSpeed) {
+        super(model, color, maxSpeed);
+    }
+
+    @Override
+    public void brake() {
+        System.out.println("Грузовик гальмує!");
+    }
+}
+
+class Matrix {
+    private int[][] matrix = new int[3][3];
+
+    public void inputMatrix(int[][] data) {
+        this.matrix = data;
+    }
+
+    public void printMatrix() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(this.matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void printNorm() {
+        int maxSum = Integer.MIN_VALUE;
+        for (int j = 0; j < 3; j++) {
+            int sum = 0;
+            for (int i = 0; i < 3; i++) {
+                sum += this.matrix[i][j];
+            }
+            if (sum > maxSum) {
+                maxSum = sum;
+            }
+        }
+        System.out.println("Норма матриці: " + maxSum);
+    }
+}
