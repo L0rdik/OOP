@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // Вводимо коефіцієнти a, b і c
+        
         System.out.print("Enter task id: ");
         int mode = scanner.nextInt();
         if(mode == 0){
         
-        // Вводимо коефіцієнти a, b і c
+    
         System.out.print("Enter the factor a: ");
         double a = scanner.nextDouble();
         System.out.print("Enter the factor b: ");
@@ -16,13 +16,13 @@ public class Main {
         System.out.print("Enter the factor c: ");
         double c = scanner.nextDouble();
         
-        // Закриваємо сканер
+        
         
 
-        // Обчислюємо дискримінант
+       
         double discriminant = b * b - 4 * a * c;
 
-        // Обрахунок коренів
+        
         if (discriminant > 0) {
             double x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
             double x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
@@ -35,13 +35,13 @@ public class Main {
         }
     }else if(mode == 1){
 
-        // Вводимо координати x та y
+       
         System.out.print("Type x: ");
         double x = scanner.nextDouble();
         System.out.print("Type y: ");
         double y = scanner.nextDouble();
 
-        // Визначаємо квадрант
+        
         if (x > 0 && y > 0) {
             System.out.println("The point is in the I quadrant.");
         } else if (x < 0 && y > 0) {
@@ -60,18 +60,18 @@ public class Main {
 
     }else if(mode == 2){
 
-        // Запитуємо у користувача число
+        
         System.out.print("Type number: ");
         int number = scanner.nextInt();
 
-        // Визначаємо, чи є число двозначним
+        
         boolean isTwoDigit = (number >= 10 && number <= 99) || (number <= -10 && number >= -99);
 
-        // Визначаємо, чи є число парним
+        
         boolean isEven = number % 2 == 0;
         System.out.println("Number " + number + " is "+ (isTwoDigit?"two-digit and":"not two-digit and")+ (isEven?" even.":" not even"));
     }else if(mode ==3){
-        // Запитуємо у користувача число
+        
         System.out.print("Type x: ");
         int number = scanner.nextInt();
         double res = -1;
