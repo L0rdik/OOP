@@ -1,12 +1,12 @@
 public class  {
     public static void main(String[] args) {
-        // Тестування класу Person
+        
         Person person1 = new Person();
         Person person2 = new Person("John Doe", 30);
         person1.move();
         person2.talk();
 
-        // Тестування класу Phone
+        
         Phone phone1 = new Phone("1234567890", "ModelX", 5.6);
         Phone phone2 = new Phone("0987654321", "ModelY", 6.0);
         Phone phone3 = new Phone("1122334455", "ModelZ", 5.8);
@@ -14,13 +14,13 @@ public class  {
         phone2.receiveCall("Bob", phone2.getNumber());
         phone3.sendMessage("7778889990", "6667778880");
 
-        // Тестування класів Sedan і Truck
+        
         Car sedan = new Sedan("Toyota Camry", "чорний", 220);
         Car truck = new Truck("MAN TGX", "білий", 160);
         sedan.gas();
         truck.brake();
 
-        // Тестування класу Matrix
+        
         Matrix matrix = new Matrix();
         int[][] data = {
             {1, 2, 3},
