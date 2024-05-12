@@ -1,0 +1,83 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+class Car {
+    String brand;
+    double enginePower;
+    Driver driver;
+    double price;
+    int year;
+
+    Car(String brand, double enginePower, Driver driver, double price, int year) {
+        this.brand = brand;
+        this.enginePower = enginePower;
+        this.driver = driver;
+        this.price = price;
+        this.year = year;
+    }
+
+    void increaseEnginePower(double percent) {
+        this.enginePower *= (1 + percent / 100);
+    }
+
+    void increasePrice(double percent) {
+        this.price *= (1 + percent / 100);
+    }
+}
+
+class Driver {
+    String name;
+    int age;
+    int experience;
+
+    Driver(String name, int age, int experience) {
+        this.name = name;
+        this.age = age;
+        this.experience = experience;
+    }
+
+    void increaseExperience() {
+        if (this.experience < 5 && this.age > 25) {
+            this.experience++;
+        }
+    }
+}
+
+class TaxiServiceHelper {
+    static Car getRandomCar(ArrayList<Car> cars) {
+        Random random = new Random();
+        return cars.get(random.nextInt(cars.size()));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Car> cars = new ArrayList<>();
+
+        for (int i = 0; i < 20; i++) {
+            Driver driver = new Driver("Водій " + (i + 1), 30, 10);
+            Car car = new Car("Марка " + (i + 1), 150 + i, driver, 20000 + i * 500, 2020 - i);
+            cars.add(car);
+        }
+
+        for (int i = 0; i < cars.size(); i++) {
+            if (i % 2 == 0) {
+                cars.get(i).increaseEnginePower(10);
+                cars.get(i).driver = new Driver("Новий водій " + (i + 1), 25, 3);
+            }
+        }
+
+        for (int i = 0; i < cars.size(); i += 2) {
+            cars.get(i).increaseEnginePower(10);
+            cars.get(i).increasePrice(5);
+        }
+
+        for (Car car : cars) {
+            car.driver.increaseExperience();
+        }
+
+        Car randomCar = TaxiServiceHelper.getRandomCar(cars);
+        System.out.println("Автомобіль марки " + randomCar.brand + " з водієм " + randomCar.driver.name + " виїхав за вами.");
+        System.out.println("Водій " + randomCar.driver.name + " прибув на місце.");
+    }
+}
