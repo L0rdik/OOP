@@ -1,50 +1,33 @@
-public class ArrayMathOperations {
-    
+import java.util.Arrays;
+
+public class MyMethods {
+    public static double areaOfTrapezoid(double base1, double base2, double height) {
+        return 0.5 * (base1 + base2) * height;
+    }
+
+    public static int minimumOfThreeNumbers(int a, int b, int c) {
+        return Math.min(Math.min(a, b), c);
+    }
+
+    public static void printArray(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static int maximumOfArray(int[] arr) {
+        return Arrays.stream(arr).max().getAsInt();
+    }
+
     public static void main(String[] args) {
-        
-        double area = calculateTrapezoidArea(5.0, 3.0, 4.0);
-        System.out.println("Площа трапеції: " + area);
+        double trapArea = areaOfTrapezoid(5, 7, 4);
+        System.out.println("Площа трапеції: " + trapArea);
 
-        
-        double min = findMinimum(12, 25, 9);
-        System.out.println("Найменше число: " + min);
+        int minNum = minimumOfThreeNumbers(8, 3, 10);
+        System.out.println("Найменше число: " + minNum);
 
-        
-        int[] array = {10, 20, 30, 40, 50};
-        System.out.print("Масив: ");
+        int[] array = {1, 5, 3, 7, 2};
         printArray(array);
 
-        
-        int max = findMaximum(array);
-        System.out.println("Найбільше число в масиві: " + max);
-    }
-
-    
-    public static double calculateTrapezoidArea(double a, double b, double h) {
-        return (a + b) * h / 2.0;
-    }
-
-    
-    public static double findMinimum(double num1, double num2, double num3) {
-        return Math.min(num1, Math.min(num2, num3));
-    }
-
-    
-    public static void printArray(int[] array) {
-        for (int num : array) {
-            System.out.print(num + " ");
-        }
-        System.out.println(); // Для переносу рядка після виводу масиву
-    }
-
-    
-    public static int findMaximum(int[] array) {
-        int max = array[0];
-        for (int num : array) {
-            if (num > max) {
-                max = num;
-            }
-        }
-        return max;
+        int maxNum = maximumOfArray(array);
+        System.out.println("Найбільше число в масиві: " + maxNum);
     }
 }
